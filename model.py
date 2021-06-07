@@ -21,8 +21,8 @@ sp_cover = plot_data.groupby(['year', 'name'])['cover'].mean().to_frame().reset_
 plot_data_temp = pd.merge(sp_cover, average_summer_temp_by_year, on='year', how='inner')
 
 plt.title("Percentage of plot covering vs summer temprature in two plant species on Qikiqtaruk Island", fontsize=16)
-plt.xlabel("Temprature (°C)", fontsize=12)
-plt.ylabel("Percentage covering in plots 1-6", fontsize=12)
+plt.xlabel("temperature  (°C)", fontsize=12)
+plt.ylabel("Percentage covering in plots 1-6 (%)", fontsize=12)
 
 #plot for Eriophorum vaginatum
 al = plot_data_temp.query('name == "Eriophorum vaginatum"', inplace = False)
@@ -44,7 +44,9 @@ b = stats.intercept
 plt.scatter(x, y, color='#B6E5A7')
 plt.plot(x, m * x + b, color='#72CE55')
 
+txt = ''' Slight positive correlation between the percentage of plots being covered and temprature increase in the two species, Eriophorum vaginatum (orange) and Salix pulchra (green). Figure suggests that higher tempratures may result in more growth within these species.'''
 plt.gca().legend(('Eriophorum vaginatum','Salix pulchra'))
+plt.figtext(0.5, 0.01, txt, wrap=True, horizontalalignment='center', fontsize=12)
 
 plt.savefig("temp_data.png")
 plt.show()
