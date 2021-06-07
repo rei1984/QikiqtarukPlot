@@ -20,9 +20,9 @@ print(average_summer_temp_by_year)
 sp_cover = plot_data.groupby(['year', 'name'])['cover'].mean().to_frame().reset_index()
 plot_data_temp = pd.merge(sp_cover, average_summer_temp_by_year, on='year', how='inner')
 
-plt.title("Percentage of plot covering vs summer temprature in two plant species on Qikiqtaruk Island", fontsize=16)
-plt.xlabel("temperature  (°C)", fontsize=12)
-plt.ylabel("Percentage covering in plots 1-6 (%)", fontsize=12)
+plt.title("Percentage of plot covering vs summer temperature in two plant species on Qikiqtaruk Island", fontsize=16)
+plt.xlabel("Temperature  (°C)", fontsize=12)
+plt.ylabel("Average Percentage covering in plots 1-6 (%)", fontsize=12)
 
 #plot for Eriophorum vaginatum
 al = plot_data_temp.query('name == "Eriophorum vaginatum"', inplace = False)
